@@ -37,12 +37,16 @@ export class OrderListComponent implements OnInit {
   msg = '';
   imgExpanded = 'imgExpanded';
   items: ImageItem[] = [];
+  index: number = 0;
 
   constructor(private dragula: DragulaService, private imageGenService: ImageGeneratorService) {
     this.items = imageGenService.getImages();
     this.dragula.setOptions('bag-items', {
       revertOnSpill: true
     });
+  }
+  getImageId() {
+    return this.index++;
   }
   ngOnInit() {
 

@@ -16,13 +16,23 @@
               
                 <ng-container *ngIf="items">
                     <tr >
-                    <td  width=120  *ngFor="let item of items"  [@imageState]='item.state' [dragula]='"bag-items"' >
+                    <td  width=120   >
+                          
+                        <div  *ngFor="let item of items"  [@imageState]='item.state' [dragula]='"bag-items"'>
 
-                      <img [class]="imgExpanded"  [@imageState]='item.state'
-                      (mouseover)="item.toggleState()"
-                      (mouseout)="item.toggleState()"
-                      [id]="item.Id" [src]="item.Source" alt="">
+                            <div>
+                            <img [class]="imgExpanded"   [@imageState]='item.state'
+                            (mouseover)="item.toggleState()"
+                            (mouseout)="item.toggleState()"
+                            [id]="item.Id" [src]="item.Source" alt="">
+                            </div>
+                            
+                            <div *ngIf="item.Id %3  == 0">
+                              <br />
+                            </div>
+                          </div>
                     </td>
+                   
                   </tr> 
                 </ng-container>
               
