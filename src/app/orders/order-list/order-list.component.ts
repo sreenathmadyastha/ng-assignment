@@ -1,55 +1,76 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
+import { ImageGeneratorService } from '../../image-generator.service';
+import { ImageItem } from '../../image-item';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations'
+
 
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+  providers: [ImageGeneratorService],
+  styleUrls: ['./order-list.component.css'],
+  animations: [
+    trigger('imageState', [
+      state('inactive', style({
+        backgroundColor: '#eee',
+        transform: 'scale(1)'
+      })),
+      state('active',   style({
+        backgroundColor: '#cfd8dc',
+        cursor: 'pointer',
+        transform: 'scale(1.2)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
+
 })
 export class OrderListComponent implements OnInit {
-    msg = '';
-    imgExpanded = 'imgExpanded';
-  public items = [
-    '../../assets/Dock.jpg',
-    '../../assets/Forest.jpg',
-    '../../assets/Tree.jpg',
-    '../../assets/Waterfall.jpg'
-  ];
-  constructor(private dragula: DragulaService) 
-  {
+  msg = '';
+  imgExpanded = 'imgExpanded';
+  items: ImageItem[] = [];
+
+  constructor(private dragula: DragulaService, private imageGenService: ImageGeneratorService) {
+    this.items = imageGenService.getImages();
     this.dragula.setOptions('bag-items', {
       revertOnSpill: true
     });
-
   }
-
   ngOnInit() {
 
     this.dragula
-    .drag
-    .subscribe(value => {
-      
-      this.msg = `Dragging the ${ value[1].src }!`;
-    });
+      .drag
+      .subscribe(value => {
 
-  this.dragula
-    .drop
-    .subscribe(value => {
-      value[1].width=300
-      value[1].height=300
-      this.msg = `Dropped the ${ value[1]}!`;
-      
-      this.items.forEach(element => {
-
-        
+        this.msg = `Dragging the ${value[1].src}!`;
       });
 
+    this.dragula
+      .drop
+      .subscribe(value => {
+        value[1].width = 300
+        value[1].height = 300
+        this.msg = `Dropped the ${value[1]}!`;
+
+        this.items.forEach(element => {
 
 
-      setTimeout(() => {
-        this.msg = '';
-      }, 1000);
-    });
+        });
+
+
+
+        setTimeout(() => {
+          this.msg = '';
+        }, 1000);
+      });
   }
 
 }

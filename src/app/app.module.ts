@@ -9,6 +9,8 @@ import {DragulaModule} from 'ng2-dragula/ng2-dragula';
 import { DragDropDirective } from './drag-drop.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +18,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,

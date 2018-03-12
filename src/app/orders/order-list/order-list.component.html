@@ -1,19 +1,40 @@
+<!-- <ngb-tabset> -->
+  <!-- <ngb-tab title="Simple">
+    <ng-template ngbTabContent> -->
+      <div class="container">
+        <div class="table">
+          <table class="table-responsive" border=0 cellpadding=5 >
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <ng-container *ngIf="items">
+                    <tr >
+                    <td  width=120  *ngFor="let item of items"  [@imageState]='item.state' [dragula]='"bag-items"' >
 
-  <ngb-tabset>
-    
-      <p>This is the content of the first tab!</p>
-      <ngb-tab title="Simple">
-        <ng-template ngbTabContent>
-        <ng-container *ngIf="items">
-          <div *ngFor="let item of items" [dragula]='"bag-items"'>
-            <img [class]="imgExpanded" width="150" height="150" [src]="item" alt="">
-          </div>
-        </ng-container>
-        </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+                      <img [class]="imgExpanded"  [@imageState]='item.state'
+                      (mouseover)="item.toggleState()"
+                      (mouseout)="item.toggleState()"
+                      [id]="item.Id" [src]="item.Source" alt="">
+                    </td>
+                  </tr> 
+                </ng-container>
+              
+            </tbody>
+          </table>
+        </div>
+        </div>
+    <!-- </ng-template>
+  </ngb-tab> -->
+<!-- </ngb-tabset> -->
 
 
 
 
-  {{msg}}
+{{msg}}
