@@ -1,0 +1,19 @@
+
+  <ngb-tabset>
+    
+      <p>This is the content of the first tab!</p>
+      <ngb-tab title="Simple">
+        <ng-template ngbTabContent>
+        <ng-container *ngIf="items">
+          <div *ngFor="let item of items" [dragula]='"bag-items"'>
+            <img [class]="imgExpanded" width="150" height="150" [src]="item" alt="">
+          </div>
+        </ng-container>
+        </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
+
+
+
+  {{msg}}
