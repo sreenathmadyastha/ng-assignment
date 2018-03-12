@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Image Dragger';
+  title = 'Sort Images';
   public imageSrc = 'https://image.freepik.com/free-icon/upload-arrow_318-26670.jpg'
   public imageSrc2 = 'https://image.freepik.com/free-icon/upload-arrow_318-26670.jpg'
 

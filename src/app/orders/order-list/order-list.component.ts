@@ -40,7 +40,7 @@ export class OrderListComponent implements OnInit {
   index: number = 0;
 
   constructor(private dragula: DragulaService, private imageGenService: ImageGeneratorService) {
-    this.items = imageGenService.getImages();
+    this.items = imageGenService.getImagesOld();
     this.dragula.setOptions('bag-items', {
       revertOnSpill: true
     });

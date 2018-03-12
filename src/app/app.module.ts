@@ -10,11 +10,17 @@ import { DragDropDirective } from './drag-drop.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImagesOrderComponent } from './images-order/images-order.component';
+import { TableRowComponent } from './images-order/table-row/table-row.component';
+import { ImageGeneratorService } from './image-generator.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DragDropDirective
+    DragDropDirective,
+    ImagesOrderComponent,
+    TableRowComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DragulaModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [ImageGeneratorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

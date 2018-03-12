@@ -1,0 +1,21 @@
+<td>
+    <table   >
+        <tr>
+          <td *ngFor="let img of image.Images; last as isLast">
+                &nbsp;
+              <img [class]="imgExpanded" [@imageState]='img.state' (mouseover)="img.toggleState()" (mouseout)="img.toggleState()" [id]="img.Id"
+              [src]="img.Source" alt="">
+           </td>
+        </tr>
+      </table>
+</td>
+<!-- <td>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="col-md-2" *ngFor="let img of image.Images; last as isLast">
+                <img [class]="imgExpanded" [@imageState]='img.state' (mouseover)="img.toggleState()" (mouseout)="img.toggleState()" [id]="img.Id"
+                    [src]="img.Source" alt="">
+            </div>
+        </div>
+    </div>
+</td> -->

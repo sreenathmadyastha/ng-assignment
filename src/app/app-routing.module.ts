@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ImagesOrderComponent } from './images-order/images-order.component';
 
 const routes: Routes = [
   {
     path:'orders',
     loadChildren: 'app/orders/orders.module#OrdersModule'
   },
-  
+
   {
-    path:'',
-    redirectTo: '',
-    loadChildren: 'app/orders/orders.module#OrdersModule',
-    pathMatch:'full'
+    path:'DisplayImages',
+    component: ImagesOrderComponent
   }
 
 ];

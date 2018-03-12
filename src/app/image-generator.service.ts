@@ -1,39 +1,44 @@
 import { Injectable } from '@angular/core';
 import { ImageItem } from './image-item';
 import { IMAGES } from './mock-image-item';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
+import { RowImageItem } from './row-image-item';
 
 @Injectable()
 export class ImageGeneratorService {
-
   constructor() { }
-  images : ImageItem[] = [];
+  images: ImageItem[] = [];
+  rowImages: RowImageItem[] = [];
+  getImages(): RowImageItem[] {
+    let imageIndex = 1;
+    let totalImages = 19;
+    let imagesPerRow = 5;
 
-  getImages() :ImageItem[] {
-  
-    // this.images.push(new ImageItem (1, '../../assets/Dock.jpg', 'active') );
-    // this.images.push(new ImageItem (2, '../../assets/Forest.jpg', 'inactive') );
-    // this.images.push(new ImageItem (3, '../../assets/Tree.jpg', 'inactive') );
-    // this.images.push(new ImageItem (4, '../../assets/Waterfall.jpg', 'inactive') );
-    this.images.push(new ImageItem (1, '../../assets/image001.JPG', 'active') );
-    this.images.push(new ImageItem (2, '../../assets/image002.JPG', 'inactive') );
-    this.images.push(new ImageItem (3, '../../assets/image003.JPG', 'inactive') );
-    this.images.push(new ImageItem (4, '../../assets/image004.JPG', 'inactive') );
-    this.images.push(new ImageItem (5, '../../assets/image005.JPG', 'inactive') );
-    this.images.push(new ImageItem (6, '../../assets/image006.JPG', 'inactive') );
-    this.images.push(new ImageItem (7, '../../assets/image007.JPG', 'inactive') );
-    this.images.push(new ImageItem (8, '../../assets/image008.JPG', 'inactive') );
-    this.images.push(new ImageItem (9, '../../assets/image009.JPG', 'inactive') );
-    this.images.push(new ImageItem (10, '../../assets/image010.JPG', 'inactive') );
-    this.images.push(new ImageItem (11, '../../assets/image011.JPG', 'inactive') );
-    this.images.push(new ImageItem (12, '../../assets/image012.JPG', 'inactive') );
-    this.images.push(new ImageItem (13, '../../assets/image013.JPG', 'inactive') );
-    this.images.push(new ImageItem (14, '../../assets/image014.JPG', 'inactive') );
-    this.images.push(new ImageItem (15, '../../assets/image015.JPG', 'inactive') );
-    this.images.push(new ImageItem (16, '../../assets/image016.JPG', 'inactive') );
-    this.images.push(new ImageItem (17, '../../assets/image017.JPG', 'inactive') );
-    this.images.push(new ImageItem (18, '../../assets/image018.JPG', 'inactive') );
+    for (let imageIndex = 1; imageIndex < totalImages; imageIndex++) 
+    {
+      for (let rowIndex = 0; rowIndex < imagesPerRow; rowIndex++) {
+        this.images.push(new ImageItem(imageIndex, '../../assets/image' + imageIndex + '.JPG', 'inactive'));
+        if (imageIndex < totalImages )
+        imageIndex = imageIndex + 1;
+      }
+      if (this.rowImages.length == 0) {
+        this.images[0].state = 'active';
+      }
+      this.rowImages.push(new RowImageItem(this.images));
+      console.log(this.rowImages);
+      this.images = [];
+    }
+    return this.rowImages;
+  }
 
+  getImagesOld(): ImageItem[] {
 
+    this.images.push(new ImageItem(1, '../../assets/Dock.jpg', 'active'));
+    this.images.push(new ImageItem(2, '../../assets/Forest.jpg', 'inactive'));
+    this.images.push(new ImageItem(3, '../../assets/Tree.jpg', 'inactive'));
+    this.images.push(new ImageItem(4, '../../assets/Waterfall.jpg', 'inactive'));
     return this.images;
   }
 
