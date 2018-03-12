@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import {DragulaModule} from 'ng2-dragula/ng2-dragula';
+
 import { DragDropDirective } from './drag-drop.directive';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -28,7 +28,6 @@ import { ImageGeneratorService } from './image-generator.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    DragulaModule,
     NgbModule.forRoot()
   ],
   providers: [ImageGeneratorService],

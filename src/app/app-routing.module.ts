@@ -4,11 +4,6 @@ import { ImagesOrderComponent } from './images-order/images-order.component';
 
 const routes: Routes = [
   {
-    path:'orders',
-    loadChildren: 'app/orders/orders.module#OrdersModule'
-  },
-
-  {
     path:'DisplayImages',
     component: ImagesOrderComponent
   }
